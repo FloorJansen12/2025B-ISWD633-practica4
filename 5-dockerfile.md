@@ -53,17 +53,25 @@ docker build -t <nombre imagen>:<tag> .
 ### Ejecutar el archivo Dockerfile y construir una imagen en la versión 1.0
 No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 ```
-
+docker inspect holadiablo:1.0
 ```
 
 **¿Cuántos pasos se han ejecutado?**
+
+- Con el "código" original, se ejecutaba hasta el paso 2 y saltaba un error, ya que no encontraba repositorios confiables para actualizar, pero realizando unos cambios ya se ejecutó correctamente.
+
 # RESPONDER 
 
 ### Inspeccionar la imagen creada
+
+<img width="1089" height="654" alt="image" src="https://github.com/user-attachments/assets/d408f6b5-c408-457f-85db-bbd1f7cd0fbf" />
+
 # COMPLETAR CON UNA CAPTURA
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
-**¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+**¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen** 
+
+- Solo se ejecutó el paso 6: Copy, el resto salen marcados como "CACHED"
 
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
@@ -75,13 +83,19 @@ Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso
 
 ### Crear un contenedor a partir de las imagen creada, mapear todos los puertos
 ```
-
+docker run --name holaDios -d -P holadiablo:1.1
 ```
 
 ### ¿Con que puerto host se está realizando el mapeo?
+
+- Con el puerto 32768
+
 # COMPLETAR CON LA RESPUESTA
 
 **¿Qué es una imagen huérfana?**
+
+- Una imagen huérfana es una imagen de Docker que ya no está asociada a ningún contenedor, pero sigue ocupando espacio en el sistema.
+
 # COMPLETAR CON LA RESPUESTA
 
 ### Identificar imágenes huérfanas
